@@ -7,6 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from PIL import Image
 import open3d as o3d
 import scipy.ndimage as ndimage
+import os
 
 #------------------------索引提取------------------------
 
@@ -154,6 +155,6 @@ for(angle, num) in zip(angles, nums):
 
     # 显示点云
     o3d.visualization.draw_geometries([pcd], window_name="Colored Point Cloud")
-
+    os.makedirs("./point_cloud", exist_ok=True)
     # 保存点云
-    o3d.io.write_point_cloud(f"point_cloud_{angle}.ply", pcd)  # 保存为PLY格式
+    o3d.io.write_point_cloud(f"./point_cloud/point_cloud_{angle}.ply", pcd)  # 保存为PLY格式
